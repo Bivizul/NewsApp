@@ -8,6 +8,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bivizul.newsapp.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,12 +24,19 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.fragment_splash)
 
+        // 1-st variant
         Handler(Looper.myLooper()!!).postDelayed({
             setContentView(binding.root)
             bottomNavMenu.setupWithNavController(
                 nav_host_fragment.findNavController()
             )
         }, 5000)
+
+        // 2-nd variant
+//        CoroutineScope(Dispatchers.Main).launch {
+//            delay(5000)
+//            findNavController(R.id.action_splashFragment_to_mainFragment)
+//        }
 
     }
 
