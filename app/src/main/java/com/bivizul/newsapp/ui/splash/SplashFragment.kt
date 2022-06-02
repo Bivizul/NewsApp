@@ -27,19 +27,7 @@ class SplashFragment : Fragment() {
     ): View {
         _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
         return binding.root
-
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        CoroutineScope(Dispatchers.Main).launch {
-//            delay(5000)
-//            findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
-//        }
-//
-//
-//    }
 
     override fun onDestroy() {
         super.onDestroy()
