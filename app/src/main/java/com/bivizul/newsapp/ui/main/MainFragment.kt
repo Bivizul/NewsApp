@@ -14,6 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
+    private val binding by viewBinding(FragmentMainBinding::bind)
+
     // 1 variant
 //    private val viewModel by viewModels<MainViewModel>()
     // 2 variant
@@ -23,20 +25,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 //        ViewModelProvider(this)[MainViewModel::class.java]
 //    }
 
-//    private var _binding: FragmentMainBinding? = null
-//    private val binding: FragmentMainBinding
-//        get() = _binding ?: throw RuntimeException("FragmentMainBinding is null")
-
-    private val binding by viewBinding(FragmentMainBinding::bind)
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.all
-
-//        viewModel.all.observe(viewLifecycleOwner){
-//
-//        }
     }
 }
