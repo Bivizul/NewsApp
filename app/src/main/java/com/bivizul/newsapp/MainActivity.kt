@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bivizul.newsapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -38,9 +37,12 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(5000)
             setContentView(binding.root)
+            with(binding){
                 bottomNavMenu.setupWithNavController(
-                    nav_host_fragment.findNavController()
+                    navHostFragment.findNavController()
                 )
+            }
+
         }
 
     }

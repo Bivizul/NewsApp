@@ -7,14 +7,15 @@
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="12dp">
 
-
     <ImageView
         android:id="@+id/imgItemArticle"
         android:layout_width="88dp"
         android:layout_height="84dp"
         android:scaleType="centerCrop"
+        android:background="@drawable/bg_image_10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image" />
 
     <LinearLayout
         android:id="@+id/llArticleInfo"
@@ -38,12 +39,12 @@
             android:id="@+id/tvArticleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipSize="end"
+            android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@color/grey_black"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:textFontWeight="700"
+            app:fontWeight="700"
             tools:text="Musk invited to UK Parliament to discuss $44 billion Twitter buyout" />
 
     </LinearLayout>
