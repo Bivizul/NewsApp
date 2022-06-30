@@ -7,12 +7,12 @@ import androidx.room.RoomDatabase
 import com.bivizul.newsapp.models.Article
 import com.bivizul.newsapp.utils.Constants.DB_NAME
 
-//@Database(entities = [Article::class], version = 1, exportSchema = false)
+@Database(entities = [Article::class], version = 1, exportSchema = true)
 abstract class ArticleDatabase : RoomDatabase() {
 
     abstract fun getArticleDao(): ArticleDao
 
-    companion object {
+    /*companion object {
         @Volatile
         private var instance: ArticleDatabase? = null
         private val LOCK = Any()
@@ -28,5 +28,5 @@ abstract class ArticleDatabase : RoomDatabase() {
                 DB_NAME
             ).build()
         }
-    }
+    }*/
 }

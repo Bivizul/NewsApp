@@ -10,26 +10,21 @@ import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bivizul.newsapp.R
 import com.bivizul.newsapp.databinding.FragmentDetailsBinding
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 
-class DetailsFragment : Fragment() {
+@AndroidEntryPoint
+class DetailsFragment : Fragment(R.layout.fragment_details) {
 
-    private var _binding: FragmentDetailsBinding? = null
-    private val binding: FragmentDetailsBinding
-        get() = _binding ?: throw RuntimeException("FragmentDetailsBinding is null")
 
+    private val binding by viewBinding(FragmentDetailsBinding::bind)
     private val bundleArgs: DetailsFragmentArgs by navArgs()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+    private val viewModel by viewModels<DetailsViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,6 +57,10 @@ class DetailsFragment : Fragment() {
                             "The device doesn't have any browser to view the document!",
                             Toast.LENGTH_LONG)
                     }
+                }
+
+                iconFavorite.setOnClickListener{
+                    viewModel.saveFavoriteArticle(article = article)
                 }
             }
         }

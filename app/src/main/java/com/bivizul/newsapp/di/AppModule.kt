@@ -1,10 +1,15 @@
 package com.bivizul.newsapp.di
 
+import android.content.Context
+import androidx.room.Room
 import com.bivizul.newsapp.data.api.NewsService
+import com.bivizul.newsapp.data.db.ArticleDao
+import com.bivizul.newsapp.data.db.ArticleDatabase
 import com.bivizul.newsapp.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,4 +44,17 @@ object AppModule {
             .client(okHttpClient())
             .build()
             .create(NewsService::class.java)
+
+    // Говорим нашему DI создать database самому
+    @Provides
+    @Singleton
+    fun provideArticleDatabase(@ApplicationContext context: Context) =
+        Room.databaseBuilder(
+            context,
+            ArticleDatabase::class.java,
+            "article_database"
+        ).build()
+
+    @Provides
+    fun provideArticle(appDatabase: ArticleDatabase): ArticleDao = appDatabase.getArticleDao()
 }

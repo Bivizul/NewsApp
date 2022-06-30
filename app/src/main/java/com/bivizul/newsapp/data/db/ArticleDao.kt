@@ -1,16 +1,14 @@
 package com.bivizul.newsapp.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.bivizul.newsapp.models.Article
 
+@Dao
 interface ArticleDao {
 
     @Query("SELECT * FROM articles")
-    suspend fun getAllArticles(): LiveData<List<Article>>
+    fun getAllArticles(): List<Article>
 
     // добавим случай при конфликте - будем заменять БД
     @Insert(onConflict = OnConflictStrategy.REPLACE)
