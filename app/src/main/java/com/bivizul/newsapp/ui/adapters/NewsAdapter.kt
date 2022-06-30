@@ -27,11 +27,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     val differ = AsyncListDiffer(this, callback)
 
-//    private var onItemClickListener: ((Article) -> Unit)? = null
-//
-//    fun setOnItemClickListener(listener: (Article) -> Unit) {
-//        onItemClickListener = listener
-//    }
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -57,6 +53,10 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 imgItemArticle.clipToOutline = true
                 tvArticleDate.text = article.publishedAt
                 tvArticleText.text = article.title
+
+                setOnClickListener {
+                    onItemClickListener?.let { it(article) }
+                }
             }
 
         }
@@ -64,5 +64,11 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    private var onItemClickListener: ((Article) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Article) -> Unit) {
+        onItemClickListener = listener
     }
 }
