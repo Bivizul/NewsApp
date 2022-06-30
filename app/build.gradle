@@ -49,7 +49,7 @@ dependencies {
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$bindingVersion"
 
     // Lifecycle
-    def lifecycleVersion = "2.4.1"
+    def lifecycleVersion = "2.5.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
@@ -80,7 +80,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
     // Navigation Components
-    def navVersion = "2.4.2"
+    def navVersion = "2.5.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
